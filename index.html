@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="nl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RouteKids | Vakantie routeplanner voor gezinnen</title>
+    <meta
+      name="description"
+      content="RouteKids helpt gezinnen met een slimme en kindvriendelijke autoroute naar Frankrijk, Spanje, Italie of Duitsland."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="#top" aria-label="RouteKids home">
+        <span class="brand-mark">RK</span>
+        <span>RouteKids</span>
+      </a>
+      <nav class="nav" aria-label="Hoofdnavigatie">
+        <a href="#planner">Planner</a>
+        <a href="#advies">Voorbeeldadvies</a>
+        <a href="#tips">Tips</a>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">Slim op autovakantie met kinderen</p>
+          <h1>Plan een relaxtere gezinsroute naar Zuid-Europa.</h1>
+          <p class="lead">
+            RouteKids helpt je met haalbare rijblokken, kindvriendelijke stops,
+            rustige vertrektijden en praktische overnachtingsregio's voor
+            Frankrijk, Spanje, Italie en Duitsland.
+          </p>
+          <div class="hero-actions">
+            <a class="button primary" href="#planner">Start routeplanner</a>
+            <a class="button ghost" href="#advies">Bekijk voorbeeld</a>
+          </div>
+          <div class="trust-row" aria-label="RouteKids voordelen">
+            <span>Gezinsproof stops</span>
+            <span>Mobielvriendelijk</span>
+            <span>Zonder account</span>
+          </div>
+        </div>
+
+        <div class="route-preview" aria-label="Gezinsroute voorbeeld">
+          <img
+            class="hero-image"
+            src="assets/routekids-hero.png"
+            alt="Gezin tijdens een zonnige vakantierit met de auto"
+          />
+          <div class="road-card">
+            <div class="map-line">
+              <span class="pin start"></span>
+              <span class="stop stop-one"></span>
+              <span class="stop stop-two"></span>
+              <span class="pin end"></span>
+            </div>
+            <div class="preview-stops">
+              <article>
+                <strong>08:30</strong>
+                <span>Vertrek met ontbijt achter de rug</span>
+              </article>
+              <article>
+                <strong>11:15</strong>
+                <span>Speeltuin + toiletstop</span>
+              </article>
+              <article>
+                <strong>15:40</strong>
+                <span>Hotelregio net voor de drukte</span>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="planner-section" id="planner">
+        <div class="section-heading">
+          <p class="eyebrow">Eerste versie</p>
+          <h2>Maak je gezinsadvies</h2>
+          <p>
+            Vul je routegegevens in. RouteKids maakt nu een realistisch
+            voorbeeldadvies; later kan dezelfde structuur gekoppeld worden aan
+            echte route-, drukte- en hoteldata.
+          </p>
+        </div>
+
+        <form class="planner-card" id="routeForm">
+          <div class="form-grid">
+            <label>
+              Vertrekplaats
+              <input
+                type="text"
+                name="origin"
+                placeholder="Bijv. Utrecht"
+                required
+              />
+            </label>
+            <label>
+              Bestemming
+              <input
+                type="text"
+                name="destination"
+                placeholder="Bijv. Annecy, Barcelona of Toscane"
+                required
+              />
+            </label>
+            <label>
+              Vertrekdatum
+              <input type="date" name="date" required />
+            </label>
+            <label>
+              Vertrektijd
+              <input type="time" name="time" value="07:30" required />
+            </label>
+            <label>
+              Aantal kinderen
+              <input
+                type="number"
+                name="children"
+                min="1"
+                max="8"
+                value="2"
+                required
+              />
+            </label>
+            <label>
+              Leeftijden kinderen
+              <input
+                type="text"
+                name="ages"
+                placeholder="Bijv. 4, 7 en 10"
+                required
+              />
+            </label>
+            <label class="wide">
+              Maximaal aantal uur rijden tussen stops
+              <input
+                type="range"
+                name="maxHours"
+                min="1.5"
+                max="4"
+                step="0.5"
+                value="2.5"
+                id="maxHours"
+              />
+              <span class="range-value"><strong id="maxHoursLabel">2,5</strong> uur</span>
+            </label>
+          </div>
+
+          <fieldset>
+            <legend>Voorkeuren onderweg</legend>
+            <div class="preference-grid">
+              <label><input type="checkbox" name="preferences" value="speeltuin" checked /> Speeltuin</label>
+              <label><input type="checkbox" name="preferences" value="restaurant" checked /> Restaurant</label>
+              <label><input type="checkbox" name="preferences" value="toilet" checked /> Toilet</label>
+              <label><input type="checkbox" name="preferences" value="hotel" /> Hotel</label>
+              <label><input type="checkbox" name="preferences" value="laadpaal" /> Laadpaal</label>
+              <label><input type="checkbox" name="preferences" value="zwembad" /> Zwembad</label>
+            </div>
+          </fieldset>
+
+          <button class="button primary submit-button" type="submit">
+            Toon reisadvies
+          </button>
+        </form>
+      </section>
+
+      <section class="results-section" id="advies" aria-live="polite">
+        <div class="section-heading compact">
+          <p class="eyebrow">Voorbeeld reisadvies</p>
+          <h2 id="resultTitle">Routeadvies voor jullie vakantie</h2>
+          <p id="resultIntro">
+            Vul het formulier in voor een advies dat aansluit op jullie gezin.
+          </p>
+        </div>
+
+        <div class="results-layout">
+          <div class="advice-block">
+            <h3>Aanbevolen stopschema</h3>
+            <div class="stop-list" id="stopList"></div>
+          </div>
+
+          <aside class="advice-sidebar">
+            <article class="advice-card">
+              <span class="card-icon">Zon</span>
+              <h3>Drukte indicatie</h3>
+              <p id="trafficAdvice">Middelmatig druk. Vermijd grote knooppunten rond lunch en vroege avond.</p>
+            </article>
+            <article class="advice-card">
+              <span class="card-icon">Hotel</span>
+              <h3>Hotelregio advies</h3>
+              <p id="hotelAdvice">Kies een hotel net buiten een grote stad, met ontbijt en gratis parkeren.</p>
+            </article>
+            <article class="advice-card">
+              <span class="card-icon">Tijd</span>
+              <h3>Alternatieve vertrektijd</h3>
+              <p id="timeAdvice">Vertrek om 06:15 voor rustigere wegen en een vroege eerste stop.</p>
+            </article>
+          </aside>
+        </div>
+      </section>
+
+      <section class="tips-section" id="tips">
+        <div class="section-heading compact">
+          <p class="eyebrow">Onderweg met kinderen</p>
+          <h2>Slimme tips voor een rustigere autorit</h2>
+        </div>
+        <div class="tip-grid" id="kidTips">
+          <article class="tip-card">
+            <h3>Werk met kleine etappes</h3>
+            <p>Vertel kinderen steeds wat de volgende stop wordt, niet hoeveel uur de hele reis nog duurt.</p>
+          </article>
+          <article class="tip-card">
+            <h3>Stop voordat iedereen moe is</h3>
+            <p>Een korte pauze met bewegen voorkomt vaak een lange pauze met gedoe.</p>
+          </article>
+          <article class="tip-card">
+            <h3>Maak een achterbanktas</h3>
+            <p>Combineer snacks, water, kleurspullen, luisterverhalen en een verrassingsmoment per dagdeel.</p>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <span>RouteKids</span>
+      <span>Eerste versie zonder backend</span>
+    </footer>
+
+    <script src="app.js"></script>
+  </body>
+</html>
