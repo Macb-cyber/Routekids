@@ -74,6 +74,7 @@ a {
 }
 
 .nav {
+  flex-wrap: wrap;
   gap: clamp(12px, 3vw, 28px);
   color: var(--muted);
   font-weight: 700;
@@ -86,7 +87,8 @@ a {
 .hero,
 .planner-section,
 .results-section,
-.tips-section {
+.tips-section,
+.routes-section {
   width: min(1180px, calc(100% - 36px));
   margin: 0 auto;
 }
@@ -301,9 +303,13 @@ h3 {
 
 .preview-stops article,
 .planner-card,
+.notice-card,
+.summary-pill,
+.feature-card,
 .advice-block,
 .advice-card,
-.tip-card {
+.tip-card,
+.route-card {
   background: var(--white);
   border: 1px solid var(--line);
   border-radius: 8px;
@@ -323,7 +329,8 @@ h3 {
 
 .planner-section,
 .results-section,
-.tips-section {
+.tips-section,
+.routes-section {
   padding: 70px 0;
 }
 
@@ -440,6 +447,58 @@ legend {
   scroll-margin-top: 82px;
 }
 
+.notice-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 20px;
+  padding: 16px 18px;
+  background: #fff8dc;
+  border-color: rgba(255, 159, 67, 0.35);
+  box-shadow: 0 10px 28px rgba(255, 159, 67, 0.12);
+}
+
+.notice-card strong {
+  flex: 0 0 auto;
+}
+
+.notice-card span {
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.personal-summary {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+  margin-bottom: 22px;
+}
+
+.summary-pill {
+  padding: 15px;
+}
+
+.summary-pill span {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--blue-700);
+  font-size: 0.78rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.summary-pill strong {
+  display: block;
+  line-height: 1.35;
+}
+
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  margin-bottom: 22px;
+}
+
 .results-layout {
   display: grid;
   grid-template-columns: minmax(0, 1.25fr) minmax(280px, 0.75fr);
@@ -449,7 +508,9 @@ legend {
 
 .advice-block,
 .advice-card,
-.tip-card {
+.tip-card,
+.feature-card,
+.route-card {
   padding: clamp(18px, 3vw, 26px);
   box-shadow: 0 14px 36px rgba(23, 48, 68, 0.08);
 }
@@ -503,16 +564,81 @@ legend {
 }
 
 .advice-card p,
-.tip-card p {
+.tip-card p,
+.feature-card p,
+.route-card p {
   margin-bottom: 0;
   color: var(--muted);
   line-height: 1.58;
+}
+
+.mini-list {
+  display: grid;
+  gap: 12px;
+}
+
+.mini-list article {
+  padding: 12px;
+  background: #f7fcff;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+
+.mini-list strong {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.mini-list p {
+  margin: 0;
+}
+
+.check-list {
+  display: grid;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.check-list li {
+  position: relative;
+  padding-left: 26px;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.check-list li::before {
+  position: absolute;
+  top: 0.05rem;
+  left: 0;
+  width: 18px;
+  height: 18px;
+  content: "";
+  background: var(--yellow);
+  border: 3px solid var(--white);
+  border-radius: 50%;
+  box-shadow: 0 0 0 1px rgba(255, 159, 67, 0.38);
 }
 
 .tip-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 18px;
+}
+
+.route-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.route-card {
+  background: linear-gradient(180deg, #ffffff, #f7fcff);
+}
+
+.route-card h3 {
+  min-height: 3.2em;
 }
 
 .site-footer {
@@ -543,9 +669,17 @@ legend {
   }
 
   .form-grid,
+  .personal-summary,
+  .feature-grid,
   .results-layout,
-  .tip-grid {
+  .tip-grid,
+  .route-grid {
     grid-template-columns: 1fr;
+  }
+
+  .notice-card {
+    align-items: flex-start;
+    flex-direction: column;
   }
 
   .preference-grid {
@@ -563,7 +697,8 @@ legend {
   .hero,
   .planner-section,
   .results-section,
-  .tips-section {
+  .tips-section,
+  .routes-section {
     width: min(100% - 28px, 1180px);
   }
 
