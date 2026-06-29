@@ -10,6 +10,9 @@ const bestTimeAdvice = document.querySelector("#bestTimeAdvice");
 const personalSummary = document.querySelector("#personalSummary");
 const ageTips = document.querySelector("#ageTips");
 const travelChecklist = document.querySelector("#travelChecklist");
+const googleMapsFrame = document.querySelector("#googleMapsFrame");
+const googleMapsLink = document.querySelector("#googleMapsLink");
+const mapsRouteLabel = document.querySelector("#mapsRouteLabel");
 
 const destinationProfiles = [
   {
@@ -106,6 +109,22 @@ function describePreferences(preferences) {
   }
 
   return preferences.map((preference) => preferenceText[preference] || preference).join(", ");
+}
+
+function getMapsRoute(origin, destination) {
+  const fallbackOrigin = "Nederland";
+  const fallbackDestination = "Zuid-Frankrijk";
+  const routeOrigin = origin && origin.trim() ? origin.trim() : fallbackOrigin;
+  const routeDestination = destination && destination.trim() ? destination.trim() : fallbackDestination;
+  const encodedOrigin = encodeURIComponent(routeOrigin);
+  const encodedDestination = encodeURIComponent(routeDestination);
+  const routeText = `${routeOrigin} naar ${routeDestination}`;
+
+  return {
+    label: routeText,
+    embedUrl: `https://www.google.com/maps?q=${encodeURIComponent(routeText)}&output=embed`,
+    linkUrl: `https://www.google.com/maps/dir/?api=1&origin=${encodedOrigin}&destination=${encodedDestination}&travelmode=driving`
+  };
 }
 
 function getBestTime(time, children, maxHours) {
@@ -247,12 +266,16 @@ function renderAdvice(data) {
   const bestTime = getBestTime(data.time, data.children, data.maxHours);
   const stops = buildStops(data);
   const preferenceSummary = describePreferences(data.preferences);
+  const mapsRoute = getMapsRoute(data.origin, data.destination);
 
   resultTitle.textContent = `Persoonlijk voorbeeldadvies van ${data.origin} naar ${data.destination}`;
   resultIntro.textContent = `Voor jullie reis richting ${profile.country} gaan we uit van vertrek om ${data.time}, ${data.children} kind${Number(data.children) === 1 ? "" : "eren"} met leeftijden ${data.ages}, rijblokken van maximaal ${formatHours(data.maxHours)} uur en onderweg voorkeur voor ${preferenceSummary}.`;
   trafficAdvice.textContent = profile.traffic;
   hotelAdvice.textContent = profile.hotelRegion;
   bestTimeAdvice.textContent = bestTime.text;
+  googleMapsFrame.src = mapsRoute.embedUrl;
+  googleMapsLink.href = mapsRoute.linkUrl;
+  mapsRouteLabel.textContent = `Routekaart: ${mapsRoute.label}.`;
 
   renderSummary(data, bestTime);
 

@@ -230,6 +230,41 @@
             </article>
           </aside>
         </div>
+
+        <article class="maps-card">
+          <div class="maps-copy">
+            <span class="card-icon">Kaart</span>
+            <div>
+              <h3>Bekijk je route op Google Maps</h3>
+              <p id="mapsRouteLabel">Voorbeeldroute van Nederland naar Zuid-Frankrijk.</p>
+            </div>
+          </div>
+          <div class="map-frame">
+            <iframe
+              id="googleMapsFrame"
+              title="Route op Google Maps"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              src="https://www.google.com/maps?q=Nederland%20naar%20Zuid-Frankrijk&output=embed"
+            ></iframe>
+          </div>
+          <div class="maps-footer">
+            <p>
+              De kaart is een gratis Google Maps-insluiting. Voor actuele
+              reistijd en live verkeersinformatie open je de route in Google
+              Maps.
+            </p>
+            <a
+              class="button primary maps-button"
+              id="googleMapsLink"
+              href="https://www.google.com/maps/dir/?api=1&origin=Nederland&destination=Zuid-Frankrijk&travelmode=driving"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Open route met live verkeer in Google Maps
+            </a>
+          </div>
+        </article>
       </section>
 
       <section class="tips-section" id="tips">
